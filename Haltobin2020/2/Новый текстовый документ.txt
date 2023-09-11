@@ -1,0 +1,38 @@
+CREATE DATABASE user21
+go
+use user21
+go
+CREATE TABLE [dbo].[Clients](	
+	Clients_ID int primary key identity ,
+	Surname nvarchar(100) ,
+	Lastname nvarchar(100) ,
+	Patronymic nvarchar(100) ,
+	 Gender nvarchar(15) ,
+	 Phone nvarchar(255) ,
+	Birthdate date ,
+	 Email nvarchar(155) ,
+	Register_Date date 
+) 
+GO
+CREATE TABLE [Service]
+(
+	Service_ID int primary key identity,
+	[Service] nvarchar(255) ,	
+	[Main_Image] nvarchar(100) ,
+	[Time] nvarchar(55) ,
+	Price money ,
+	Discount float 
+) 
+GO
+CREATE TABLE Service_Clients
+(
+	Service_Client_ID int primary key identity,
+	[Service_Name] nvarchar(255) ,
+	Service_ID int FOREIGN KEY REFERENCES [Service](Service_ID),
+	Date_Service datetime ,
+	Client nvarchar(100) ,
+	Client_ID int FOREIGN KEY REFERENCES [Clients](Clients_ID)
+)
+GO
+
+
